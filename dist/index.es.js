@@ -94,36 +94,6 @@ function useEventListener(eventName, handler) {
   );
 }
 
-var IsDevice = function () {
-  if (typeof navigator == 'undefined') return;
-  var ua = navigator.userAgent;
-  return {
-    info: ua,
-    Android: function Android() {
-      return ua.match(/Android/i);
-    },
-    BlackBerry: function BlackBerry() {
-      return ua.match(/BlackBerry/i);
-    },
-    IEMobile: function IEMobile() {
-      return ua.match(/IEMobile/i);
-    },
-    iOS: function iOS() {
-      return ua.match(/iPhone|iPad|iPod/i);
-    },
-    OperaMini: function OperaMini() {
-      return ua.match(/Opera Mini/i);
-    },
-
-    /**
-     * Any Device
-     */
-    any: function any() {
-      return IsDevice.Android() || IsDevice.BlackBerry() || IsDevice.iOS() || IsDevice.OperaMini() || IsDevice.IEMobile();
-    }
-  };
-}(); // Export
-
 /**
  * Cursor Core
  * Replaces the native cursor with a custom animated cursor, consisting
@@ -365,11 +335,6 @@ function AnimatedCursor(_ref3) {
       innerScale = _ref3$innerScale === void 0 ? 0.6 : _ref3$innerScale,
       _ref3$trailingSpeed = _ref3.trailingSpeed,
       trailingSpeed = _ref3$trailingSpeed === void 0 ? 8 : _ref3$trailingSpeed;
-
-  if (typeof navigator !== 'undefined' && IsDevice.any()) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null);
-  }
-
   return /*#__PURE__*/React.createElement(CursorCore, {
     color: color,
     outerAlpha: outerAlpha,
