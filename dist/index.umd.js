@@ -1,10 +1,12 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react')) :
   typeof define === 'function' && define.amd ? define(['react'], factory) :
-  (global = global || self, global.AnimatedCursor = factory(global.React));
-}(this, (function (React) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.AnimatedCursor = factory(global.React));
+})(this, (function (React) { 'use strict';
 
-  var React__default = 'default' in React ? React['default'] : React;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -15,14 +17,17 @@
   }
 
   function _iterableToArrayLimit(arr, i) {
-    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+    if (_i == null) return;
     var _arr = [];
     var _n = true;
     var _d = false;
-    var _e = undefined;
+
+    var _s, _e;
 
     try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
         _arr.push(_s.value);
 
         if (i && _arr.length === i) break;
@@ -46,7 +51,7 @@
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
     if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Map" || n === "Set") return Array.from(o);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
   }
 
@@ -339,10 +344,10 @@
     }; // Hide / Show global cursor
 
     document.body.style.cursor = 'none';
-    return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
       ref: cursorOuterRef,
       style: styles.cursorOuter
-    }), /*#__PURE__*/React__default.createElement("div", {
+    }), /*#__PURE__*/React__default["default"].createElement("div", {
       ref: cursorInnerRef,
       style: styles.cursorInner
     }));
@@ -370,10 +375,10 @@
         trailingSpeed = _ref3$trailingSpeed === void 0 ? 8 : _ref3$trailingSpeed;
 
     if (typeof navigator !== 'undefined' && IsDevice.any()) {
-      return /*#__PURE__*/React__default.createElement(React__default.Fragment, null);
+      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null);
     }
 
-    return /*#__PURE__*/React__default.createElement(CursorCore, {
+    return /*#__PURE__*/React__default["default"].createElement(CursorCore, {
       color: color,
       outerAlpha: outerAlpha,
       innerSize: innerSize,
@@ -386,4 +391,4 @@
 
   return AnimatedCursor;
 
-})));
+}));
